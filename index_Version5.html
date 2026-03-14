@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project B.L.O.O.M. - Building Literacy, Openness, and Ownership of Maturity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pastel-blue: #b3d9f2;
+            --pastel-purple: #d4b5e8;
+            --pastel-pink: #f0b8d8;
+            --soft-blue: #c5e3f7;
+            --soft-purple: #dcc9f0;
+            --soft-pink: #f5d1e8;
+            --deep-purple: #7a5c8a;
+            --dark-text: #5a4a6b;
+            --light-bg: #faf8fc;
+            --white: #ffffff;
+            --border-radius: 15px;
+            --shadow: 0 5px 20px rgba(122, 92, 138, 0.12);
+            --shadow-hover: 0 10px 30px rgba(122, 92, 138, 0.2);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, #faf8fc 0%, #f5f1fa 50%, #fdf7f5 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-purple) 50%, var(--pastel-pink) 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bloom-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+        }
+
+        .floral-decoration {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2em;
+            animation: sway 4s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(10px); }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(90deg, var(--deep-purple) 0%, var(--pastel-purple) 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            box-shadow: var(--shadow);
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 18px 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--pastel-pink);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar a:hover::after {
+            width: 80%;
+        }
+
+        /* Cover Photo */
+        .cover-photo {
+            width: 100%;
+            max-height: 400px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .cover-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 80px 20px;
+            position: relative;
+        }
+
+        .alternate-bg {
+            background: linear-gradient(135deg, var(--soft-pink) 0%, var(--soft-purple) 50%, var(--soft-blue) 100%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Floral Background Elements */
+        .floral-bg {
+            position: absolute;
+            font-size: 6em;
+            opacity: 0.15;
+            pointer-events: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .floral-left {
+            left: -50px;
+            top: 50px;
+        }
+
+        .floral-right {
+            right: -50px;
+            bottom: 50px;
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: var(--deep-purple);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-purple), var(--pastel-pink));
+            border-radius: 3px;
+        }
+
+        /* Overview */
+        .overview-card {
+            background: white;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--pastel-purple);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--soft-blue), var(--soft-pink));
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .description {
+            font-size: 1.15em;
+            text-align: center;
+            line-height: 1.9;
+            color: var(--dark-text);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Goals Section */
+        .goals-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .goal-item {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--pastel-blue);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .goal-item:nth-child(2) {
+            border-top-color: var(--pastel-pink);
+        }
+
+        .goal-item::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--soft-purple), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .goal-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .goal-item:hover::before {
+            opacity: 0.15;
+        }
+
+        .goal-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .goal-item h3 {
+            color: var(--deep-purple);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .goal-item p {
+            line-height: 1.8;
+            color: var(--dark-text);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Team Section */
+        .team-intro {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--dark-text);
+            margin-bottom: 40px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: white;
+            padding: 35px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--pastel-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pastel-blue), var(--pastel-purple), var(--pastel-pink));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .team-member:hover::after {
+            transform: scaleX(1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .team-member.lead {
+            border-top: 5px solid var(--pastel-purple);
+            background: linear-gradient(135deg, white 0%, var(--soft-blue) 100%);
+        }
+
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-purple));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(122, 92, 138, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .member-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .member-avatar.avatar-blue {
+            background: linear-gradient(135deg, var(--pastel-blue), var(--soft-blue));
+        }
+
+        .member-avatar.avatar-purple {
+            background: linear-gradient(135deg, var(--pastel-purple), var(--soft-purple));
+        }
+
+        .member-avatar.avatar-pink {
+            background: linear-gradient(135deg, var(--pastel-pink), var(--soft-pink));
+        }
+
+        .member-avatar.lead-avatar {
+            width: 80px;
+            height: 80px;
+            font-size: 2em;
+            box-shadow: 0 8px 25px rgba(122, 92, 138, 0.35);
+        }
+
+        .team-member h3 {
+            color: var(--deep-purple);
+            margin-bottom: 8px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .role {
+            color: var(--pastel-purple);
+            font-weight: 700;
+            font-size: 0.95em;
+            margin-bottom: 10px;
+        }
+
+        .role-description {
+            color: #8b7a9a;
+            font-size: 0.9em;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-content {
+            background: white;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--pastel-purple);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-content::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--soft-pink), transparent);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .contact-content p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            margin-top: 20px;
+            color: var(--dark-text);
+        }
+
+        .cta-button {
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button a {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-purple), var(--pastel-pink));
+            color: white;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(122, 92, 138, 0.25);
+            border: 2px solid transparent;
+            font-size: 1.05em;
+        }
+
+        .cta-button a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(122, 92, 138, 0.4);
+            background: linear-gradient(135deg, var(--soft-blue), var(--soft-purple), var(--soft-pink));
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--deep-purple), var(--pastel-purple));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.95em;
+        }
+
+        footer p {
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+
+            .bloom-icon {
+                font-size: 3em;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            .goals-content {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar a {
+                padding: 15px 20px;
+                font-size: 0.95em;
+            }
+
+            .section {
+                padding: 50px 20px;
+            }
+
+            .overview-card,
+            .contact-content {
+                padding: 30px 20px;
+            }
+
+            .cover-photo {
+                max-height: 300px;
+            }
+
+            .floral-bg {
+                font-size: 4em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8em;
+                letter-spacing: 1px;
+            }
+
+            .bloom-icon {
+                font-size: 2.5em;
+            }
+
+            .tagline {
+                font-size: 0.95em;
+            }
+
+            .floral-decoration {
+                gap: 10px;
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            .section {
+                padding: 35px 15px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-content {
+                flex-direction: column;
+            }
+
+            .navbar a {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .overview-card,
+            .contact-content {
+                padding: 20px 15px;
+            }
+
+            .description {
+                font-size: 1em;
+            }
+
+            .cover-photo {
+                max-height: 200px;
+            }
+
+            .floral-bg {
+                font-size: 3em;
+            }
+
+            .floral-left {
+                left: -30px;
+            }
+
+            .floral-right {
+                right: -30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="bloom-icon">🌸</div>
+            <h1>Project B.L.O.O.M.</h1>
+            <p class="tagline">Building Literacy, Openness, and Ownership of Maturity</p>
+            <div class="floral-decoration">
+                <span>🌺</span>
+                <span>🌼</span>
+                <span>🌷</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- COVER PHOTO SECTION -->
+    <div class="cover-photo">
+        <img src="cover.jpg" alt="Project B.L.O.O.M. Cover">
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#overview"><i class="fas fa-leaf"></i> Overview</a>
+            <a href="#goals"><i class="fas fa-bullseye"></i> Goals</a>
+            <a href="#team"><i class="fas fa-users"></i> Team</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="overview" class="section">
+            <div class="floral-bg floral-left">
+                <span>🌸</span>
+                <span>🌿</span>
+            </div>
+            <div class="container">
+                <h2>Project Overview</h2>
+                <div class="overview-card">
+                    <p class="description">
+                        Project B.L.O.O.M. is dedicated to promoting and raising awareness for safe sex and contraceptive measures. 
+                        Our initiative aims to empower individuals with comprehensive knowledge and resources to make informed decisions 
+                        about their sexual health and well-being.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="goals" class="section alternate-bg">
+            <div class="floral-bg floral-right">
+                <span>🌺</span>
+                <span>🌼</span>
+            </div>
+            <div class="container">
+                <h2>Goals & Objectives</h2>
+                <div class="goals-content">
+                    <div class="goal-item">
+                        <div class="goal-icon">💡</div>
+                        <h3>Primary Goal</h3>
+                        <p>Promote and raise awareness for safe sex and contraceptive measures among our target participants.</p>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-icon">🎯</div>
+                        <h3>Our Approach</h3>
+                        <p>We provide comprehensible and simple information through accessible web-based platforms, making sexual health education available to everyone who needs it.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="section">
+            <div class="floral-bg floral-left">
+                <span>🌷</span>
+                <span>🌿</span>
+            </div>
+            <div class="container">
+                <h2>Meet Our Team</h2>
+                <p class="team-intro">Our diverse team of professionals is committed to making a difference.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar avatar-blue">D</div>
+                        <h3>Dane Kirzen Alinea</h3>
+                        <p class="role">Project Specialist</p>
+                        <div class="role-description">Oversees project execution and quality assurance</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar avatar-purple">B</div>
+                        <h3>Bethany H. Cativo</h3>
+                        <p class="role">Strategist Planner</p>
+                        <div class="role-description">Develops strategic initiatives and planning</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar avatar-pink">M</div>
+                        <h3>Marcus Gavrie Florentino</h3>
+                        <p class="role">Research Specialist</p>
+                        <div class="role-description">Conducts research and data analysis</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar avatar-blue">I</div>
+                        <h3>Marwin Iggy Licoto</h3>
+                        <p class="role">Monitoring and Evaluation Officer</p>
+                        <div class="role-description">Tracks progress and evaluates outcomes</div>
+                    </div>
+                    <div class="team-member lead">
+                        <div class="member-avatar lead-avatar avatar-purple">R</div>
+                        <h3>Rosette Khristofer Ocampo</h3>
+                        <p class="role">Lead Planner / Project Head</p>
+                        <div class="role-description">Leads the overall project vision and direction</div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar avatar-pink">J</div>
+                        <h3>Jan Michael Tan</h3>
+                        <p class="role">Financial Resource Officer</p>
+                        <div class="role-description">Manages budget and financial resources</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section alternate-bg contact-section">
+            <div class="floral-bg floral-right">
+                <span>🌸</span>
+                <span>🌼</span>
+                <span>🌷</span>
+            </div>
+            <div class="container">
+                <h2>Get Involved</h2>
+                <div class="contact-content">
+                    <p>Interested in learning more about Project B.L.O.O.M.? We welcome your questions and feedback.</p>
+                    <p class="contact-info">For more information, please reach out to our team.</p>
+                    <div class="cta-button">
+                        <a href="mailto:contact@bloom.project">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Project B.L.O.O.M. All rights reserved.</p>
+        <p>Building Literacy, Openness, and Ownership of Maturity</p>
+    </footer>
+</body>
+</html>
